@@ -96,7 +96,7 @@ def main(iargs=None):
     run(img1, img2, inps.prefix, inps.azlooks, inps.rglooks)
 
 if __name__ == '__main__':
-    
+    main()
     '''
     Main driver.
     '''
