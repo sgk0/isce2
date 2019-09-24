@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+#
+# Author: Piyush Agram
+# Copyright 2016
+#
+
 from .runTopo import filenameWithLooks
 import os
 
