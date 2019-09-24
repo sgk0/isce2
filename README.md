@@ -628,7 +628,7 @@ rtcApp_sentinel.xml ("rtcApp.py rtcApp_sentinel.xml")
 
 ```xml
 <rtcApp>
-    <constant name="dir">/Users/mirsl1-mac/postdoc_kraatz/data/sentinel1 </constant>
+    <constant name="dir">/Users/data/sentinel1 </constant>
     <component name="rtcApp">
         <property name="sensor name">sentinel1</property>
         <component name="master">
