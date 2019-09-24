@@ -626,6 +626,7 @@ between three files as follows:
 #### separate example for RTC processing workflow
 rtcApp_sentinel.xml ("rtcApp.py rtcApp_sentinel.xml")
 
+```xml
 <rtcApp>
     <constant name="dir">/Users/mirsl1-mac/postdoc_kraatz/data/sentinel1 </constant>
     <component name="rtcApp">
@@ -639,6 +640,7 @@ rtcApp_sentinel.xml ("rtcApp.py rtcApp_sentinel.xml")
         </component>
     </component>
 </rtcApp>
+```
 -----
 
 ## Component Configurability
