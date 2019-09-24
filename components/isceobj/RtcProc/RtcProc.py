@@ -69,7 +69,8 @@ INC_FILENAME = Component.Parameter(
 GAMMA0_FILENAME = Component.Parameter(
         'gamma0FileName',
         public_name='Gamma0 backscatter file',
-        default = 'gamma0.rdr',
+        default = 'gamma0.img',
+        #default = 'gamma0.rdr',
         type = str,
         mandatory = False,
         doc = 'Unmasked gamma0 backscatter file')

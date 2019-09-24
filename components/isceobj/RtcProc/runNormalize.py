@@ -1,42 +1,41 @@
-#
-# Author: Piyush Agram
-# Copyright 2016
-#
-
-import logging
-import isceobj
-import mroipac
+#!/usr/bin/env python3
+from .runTopo import filenameWithLooks
 import os
-import numpy as np
-from isceobj.Util.decorators import use_api
 
-logger = logging.getLogger('isce.grdsar.looks')
-
-
-
-def runNormalize(self):
+def runNormalize(self, normalize=True):
     '''
     Make sure that a DEM is available for processing the given data.
     '''
-   
+    if not normalize:
+        return
+
     refPol = self._grd.polarizations[0]
     master = self._grd.loadProduct( os.path.join(self._grd.outputFolder, 'beta_{0}.xml'.format(refPol)))
 
-
     azlooks, rglooks = self._grd.getLooks( self.posting, master.groundRangePixelSize, master.azimuthPixelSize, self.numberAzimuthLooks, self.numberRangeLooks)
 
+    outname = os.path.join(self._grd.outputFolder, self._grd.gamma0FileName)
+    incname = os.path.join(self._grd.geometryFolder, self._grd.incFileName)
+    maskname = os.path.join(self._grd.geometryFolder, self._grd.slMaskFileName)
 
-    if (azlooks == 1) and (rglooks == 1):
-        return
-
-    slantRange = False
     for pol in self._grd.polarizations:
-        inname = os.path.join( self._grd.outputFolder, 'beta_{0}.img'.format(pol) )
-        takeLooks(inname, azlooks, rglooks)
+        cmd = "imageMath.py --e='a*cos(b_0*PI/180.)/cos(b_1*PI/180.) * (c==0)' --a={beta} --b={inc} --c={mask} -o {out} -t FLOAT -s BIL" 
 
-        if not slantRange:
-            inname = master.slantRangeImage.filename
-            takeLooks(inname, azlooks, rglooks)
-            slantRange = True
+        spl = os.path.splitext(outname)
+        outpolname = spl[0] + '_' + pol +  spl[1]
+        if (azlooks != 1) or (rglooks != 1):
+            outpolname = filenameWithLooks(outpolname, azlooks, rglooks)
 
-    return
+        betaname = os.path.join( self._grd.outputFolder, 'beta_{0}.img'.format(pol))
+        if (azlooks != 1) or (rglooks != 1):
+            betaname = filenameWithLooks(betaname, azlooks, rglooks)
+
+        cmdrun = cmd.format(inc = incname,
+                            beta = betaname,
+                            out = outpolname,
+                            mask = maskname)
+
+        status = os.system(cmdrun)
+
+        if status:
+            raise Exception('{0} Failed.'.format(cmdrun))

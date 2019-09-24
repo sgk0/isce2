@@ -43,7 +43,6 @@ def runVerifyDEM(self):
             raise Exception('Unknown reference system for DEM: {0}'.format(demimg.reference))
 
     else:
-
         refPol = self._grd.polarizations[0]
         
         master = self._grd.loadProduct( os.path.join(self._grd.outputFolder, 'beta_{0}.xml'.format(refPol)))
