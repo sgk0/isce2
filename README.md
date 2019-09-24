@@ -623,7 +623,22 @@ between three files as follows:
     <property name="OUTPUT">20061231</property>
 </component>
 ```
+#### separate example for RTC processing workflow
+rtcApp_sentinel.xml ("rtcApp.py rtcApp_sentinel.xml")
 
+<rtcApp>
+    <constant name="dir">/Users/mirsl1-mac/postdoc_kraatz/data/sentinel1 </constant>
+    <component name="rtcApp">
+        <property name="sensor name">sentinel1</property>
+        <component name="master">
+            <property name="safe">$dir$/rtc_App_new/data/S1A_IW_GRDH_1SDV_20181221T225104_20181221T225129_025130_02C664_B46C.zip</property>
+            <property name="orbit directory">$dir$/orbits</property>
+            <property name="orbit file">$dir$/orbits/S1A_OPER_AUX_RESORB_OPOD_20181222T011619_V20181221T210119_20181222T001849.EOF</property>
+            <property name="output directory">$dir$/rtc_App_new/output</property>
+            <property name="polarization">[VV, VH]</property>
+        </component>
+    </component>
+</rtcApp>
 -----
 
 ## Component Configurability
