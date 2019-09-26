@@ -155,7 +155,7 @@ NUMBER_RANGE_LOOKS = Application.Parameter('numberRangeLooks',
 )
 
 POSTING = Application.Parameter('posting',
-            public_name='azimuth looks',
+            public_name='posting',
             default = 20.0,
             type = float,
             mandatory = False,
@@ -393,7 +393,7 @@ class GRDSAR(Application):
         ##Run topo for each bursts
         self.step('topo', func=self.runTopo)
 
-	##Run normalize to get gamma0
+	    ##Run normalize to get gamma0
         self.step('normalize', func=self.runNormalize)
 
         # Geocode
