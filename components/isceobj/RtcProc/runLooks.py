@@ -51,7 +51,7 @@ def runLooks(self):
 
     azlooks, rglooks = self._grd.getLooks( self.posting, master.groundRangePixelSize, master.azimuthPixelSize, self.numberAzimuthLooks, self.numberRangeLooks)
 
-    
+
     if (azlooks == 1) and (rglooks == 1):
         return
 

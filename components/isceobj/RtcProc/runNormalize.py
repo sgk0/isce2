@@ -20,8 +20,6 @@ def runNormalize(self):
     '''
     Make sure that a DEM is available for processing the given data.
     '''
-    
-    
     refPol = self._grd.polarizations[0]
     master = self._grd.loadProduct( os.path.join(self._grd.outputFolder, 'beta_{0}.xml'.format(refPol)))
 
