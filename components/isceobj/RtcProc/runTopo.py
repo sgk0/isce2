@@ -30,7 +30,7 @@ def runTopo(self, method='legendre'):
             master.groundRangePixelSize, self.numberAzimuthLooks,
             self.numberRangeLooks)
 
-            
+
     if (azlooks == 1) and (rglooks == 1):
         rangeName = master.slantRangeImage.filename
 
