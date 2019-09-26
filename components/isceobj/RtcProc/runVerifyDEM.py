@@ -45,6 +45,7 @@ def runVerifyDEM(self):
     else:
 
         refPol = self._grd.polarizations[0]
+
         master = self._grd.loadProduct( os.path.join(self._grd.outputFolder, 'beta_{0}.xml'.format(refPol)))
         bbox = master.getBbox()
 
