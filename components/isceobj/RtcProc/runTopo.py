@@ -26,6 +26,8 @@ def runTopo(self, method='legendre'):
                                         'beta_{0}.xml'.format(refPol)))
 
 
+    rangeName = master.slantRangeImage.filename
+    
     azlooks, rglooks = self._grd.getLooks(self.posting, master.azimuthPixelSize,
             master.groundRangePixelSize, self.numberAzimuthLooks,
             self.numberRangeLooks)
