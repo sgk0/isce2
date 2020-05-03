@@ -444,10 +444,10 @@ class GRDSAR(Application):
         self.multilook()
 
         ##Run topo for each burst
-        #self.runTopo()
+        self.runTopo()
 	
 	##Run normalize to get gamma0
-        #self.runNormalize()
+        self.runNormalize()
 
         # Geocode
         self.runGeocode()
